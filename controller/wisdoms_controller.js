@@ -2,7 +2,6 @@ const { success, failure } = require('../public/response')
 const Wisdom = require('../model/wisdom')
 let currentWisdom
 const getAll = async (req, res) => {
-  console.log(`[${req.method}]`,req.url);
   let { lang } = req.query
   try {
     if (lang) lang = lang.toLowerCase().replace(lang[0], lang[0].toUpperCase())
@@ -27,7 +26,6 @@ const getAll = async (req, res) => {
 }
 
 const getWisdom = async (req, res) => {
-  console.log(`[${req.method}]`,req.url);
   const date = new Date().getDay()
   try {
     const wisdoms = await Wisdom.find()
@@ -51,7 +49,6 @@ const getWisdom = async (req, res) => {
 }
 
 const createWisdom = async (req, res) => {
-  console.log(`[${req.method}]`,req.url);
   const body = req.body
   try {
     const wisdom = new Wisdom(body)
@@ -67,7 +64,6 @@ const createWisdom = async (req, res) => {
 }
 
 const updateWisdom = async (req, res) => {
-  console.log(`[${req.method}]`,req.url);
   const { id } = req.params
   const body = req.body
   try {
@@ -87,7 +83,6 @@ const updateWisdom = async (req, res) => {
 }
 
 const deleteWisdom = async (req, res) => {
-  console.log(`[${req.method}]`,req.url);
   const { id } = req.params
   try {
     const wisdom = await Wisdom.findOneAndDelete(id)
